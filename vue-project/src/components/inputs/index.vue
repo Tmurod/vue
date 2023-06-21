@@ -2,14 +2,8 @@
   <div class="container">
     <Title :len="movies.length" />
     <Search />
-    <List
-      v-for="(val, ind) in movies"
-      :key="ind"
-      :title="val.title"
-      :id="val.id"
-      :rating="val.rating"
-    />
-    <Add />
+    <List v-for="val in movies" :key="val.id" :movie="val" @remove="remove" />
+    <AddMovie @addMovie="addMovie" />
   </div>
 </template>
 
@@ -17,13 +11,13 @@
 import Title from "./title.vue";
 import Search from "./search.vue";
 import List from "./list.vue";
-import Add from "./addMovie.vue";
+import AddMovie from "./addMovie.vue";
 export default {
   components: {
     Title,
     Search,
     List,
-    Add,
+    AddMovie,
   },
   data() {
     return {
@@ -33,6 +27,15 @@ export default {
         { id: 3, title: "Ilhaq", rating: 70, favourite: false },
       ],
     };
+  },
+  methods: {
+    addMovie(list) {
+      this.movies.push(list);
+    },
+    remove(e) {
+      let res = this.movies.filter((val) => val.id !== e);
+      this.movies = res;
+    },
   },
 };
 </script>
