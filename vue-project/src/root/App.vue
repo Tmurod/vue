@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div
-      class="d-flex justify-content-center  gap-5"
+      class="d-flex justify-content-center gap-5"
       v-for="val in navbar"
       :key="val.id"
     >

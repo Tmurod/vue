@@ -33,6 +33,7 @@ export default {
   },
   methods: {
     addMovie() {
+      if (!this.title || !this.rating) return;
       const newMovie = {
         title: this.title,
         rating: this.rating,

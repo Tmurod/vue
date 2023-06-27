@@ -33,7 +33,6 @@ export default {
       };
       this.$emit("remove", id);
     },
-    
   },
 };
 </script>
